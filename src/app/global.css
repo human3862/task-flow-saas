@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@source '../../';
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  /* Добавляем растяжение тени (например, 0 0 0px 50px), 
+     чтобы она перекрыла белую рамку браузера */
+  -webkit-box-shadow: 0 0 0px 50px #383838 inset !important;
+  caret-color: white;
+  /* Иногда помогает явно указать цвет рамки */
+  border-color: #555 !important;
+}

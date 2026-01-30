@@ -1,58 +1,29 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+import Link from 'next/link'
 
-import config from '@/payload.config'
-import './styles.css'
-
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
+export default function HomePage() {
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
+    <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
+      <h1 className="mb-6 bg-linear-to-r from-blue-500 via-purple-500 to-emerald-500 bg-clip-text text-5xl font-black text-transparent md:text-7xl">
+        Управляйте задачами <br /> с инженерной точностью
+      </h1>
+      <p className="mb-10 max-w-2xl text-lg leading-relaxed text-neutral-400">
+        Enterprise-платформа с Канбан-доской, глубокой аналитикой проектов и
+        общим доступом. Построена на Next.js 15 и Payload 3.0.
+      </p>
+
+      <div className="flex gap-4">
+        <Link
+          href="/tasks"
+          className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-blue-900/40 transition-all hover:bg-blue-800"
+        >
+          Начать работу
+        </Link>
+        <Link
+          href="/register"
+          className="rounded-2xl bg-neutral-900/70 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-neutral-900/30"
+        >
+          Создать аккаунт
+        </Link>
       </div>
     </div>
   )

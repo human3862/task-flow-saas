@@ -6,8 +6,26 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
   },
   auth: true,
+  access: {
+    read: () => true,
+  },
   fields: [
-    // Email added by default
-    // Add more fields as needed
+    {
+      name: 'role',
+      type: 'select',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'User', value: 'user' },
+      ],
+      defaultValue: 'user',
+      required: true,
+      saveToJWT: true,
+    },
+    {
+      name: 'nickname',
+      type: 'text',
+      required: true,
+      unique: true,
+    },
   ],
 }
