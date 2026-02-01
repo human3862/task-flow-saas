@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Header } from '@/widgets/header'
 import React from 'react'
 import { Toaster } from 'sonner'

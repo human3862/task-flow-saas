@@ -2,7 +2,6 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
   output: 'standalone',
   typescript: {
     ignoreBuildErrors: true,
@@ -11,10 +10,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
-  experimental: {
-    // В некоторых версиях помогает пропустить затык на рендеринге
-    missingSuspenseWithCSRBailout: false,
-  },
   staticPageGenerationTimeout: 1,
 
   webpack: (webpackConfig) => {
