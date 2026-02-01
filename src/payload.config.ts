@@ -4,11 +4,11 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-
 import { Media } from './collections/Media'
 import { Projects } from './collections/Projects'
 import { Users } from './collections/Users'
 import { Tasks } from './entities/task/model/Tasks'
+import { migrations } from './migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,6 +31,7 @@ export default buildConfig({
       connectionString:
         process.env.DATABASE_URI || process.env.DATABASE_URL || '',
     },
+    prodMigrations: migrations,
     push: true,
   }),
   sharp,

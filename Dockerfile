@@ -43,11 +43,6 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# --- ИСПРАВЛЕНИЕ: Копируем папки миграций и конфиги, чтобы Payload их видел ---
-COPY --from=builder --chown=nextjs:nodejs /app/src/migrations ./src/migrations
-COPY --from=builder --chown=nextjs:nodejs /app/src/payload.config.ts ./src/payload.config.ts
-# ------------------------------------------------------------------------------
-
 USER nextjs
 
 EXPOSE 3000
