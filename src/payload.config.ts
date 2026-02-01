@@ -29,7 +29,8 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString:
-        process.env.DATABASE_URI || 'postgresql://127.0.0.1:5432/build_temp',
+        process.env.DATABASE_URI ||
+        'postgresql://fake:fake@127.0.0.1:5432/fake',
     },
     push: false,
   }),
