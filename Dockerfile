@@ -45,7 +45,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # --- ИСПРАВЛЕНИЕ: Копируем папки миграций и конфиги, чтобы Payload их видел ---
 COPY --from=builder --chown=nextjs:nodejs /app/src/migrations ./src/migrations
-COPY --from=builder --chown=nextjs:nodejs /app/payload.config.ts ./payload.config.ts
+COPY --from=builder --chown=nextjs:nodejs /app/src/payload.config.ts ./src/payload.config.ts
 # ------------------------------------------------------------------------------
 
 USER nextjs
