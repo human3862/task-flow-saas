@@ -25,13 +25,14 @@ export async function updateTaskStatusAction(
     await payload.update({
       collection: 'tasks',
       id: taskId,
-      data: validated.data,
+      data: validated.data as Partial<Task>,
     })
 
     revalidatePath('/dashboard')
     revalidatePath('/', 'layout')
     return { success: true }
-  } catch (_e) {
+  } catch (error) {
+    console.error(error)
     return { error: 'Ошибка обновления статуса и позиции' }
   }
 }
