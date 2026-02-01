@@ -11,7 +11,7 @@ services:
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       NEXT_PUBLIC_SERVER_URL: https://your-domain.com
     ports:
-      - '5432:5432'
+      - '3000:3000'
     depends_on:
       db:
         condition: service_healthy
