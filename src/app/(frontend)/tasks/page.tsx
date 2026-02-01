@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { TaskList } from '@/features/task'
 import { AddTask } from '@/features/task-create'
 import { TaskToolbar } from '@/features/task-filters'
@@ -5,7 +6,6 @@ import { Project } from '@/payload-types'
 import config from '@/payload.config'
 import { headers as getHeaders } from 'next/headers'
 import { getPayload } from 'payload'
-export const dynamic = 'force-dynamic'
 export default async function TasksPage({
   searchParams,
 }: {

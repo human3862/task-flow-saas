@@ -1,9 +1,9 @@
 'use client'
-
+export const dynamic = 'force-dynamic'
 import { registerAction } from '@/features/auth'
 import Link from 'next/link'
 import { useActionState } from 'react'
-export const dynamic = 'force-dynamic'
+
 export default function RegisterPage() {
   const [state, formAction, isPending] = useActionState(registerAction, null)
 

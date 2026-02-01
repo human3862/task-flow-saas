@@ -1,10 +1,10 @@
+export const dynamic = 'force-dynamic'
 import { CreateProject } from '@/features/project-create'
 import { Projects } from '@/features/projects'
 import config from '@/payload.config'
 import { headers as getHeaders } from 'next/headers'
 import { getPayload } from 'payload'
 
-export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export default async function DashboardPage() {
