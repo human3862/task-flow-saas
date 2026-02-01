@@ -28,7 +28,11 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString:
+        process.env.NODE_ENV === 'production' &&
+        !process.env.PAYLOAD_IGNORE_DATABASE_CONNECTION
+          ? process.env.DATABASE_URI
+          : 'postgresql://fake:fake@localhost:5432/fake',
     },
     push: false,
   }),

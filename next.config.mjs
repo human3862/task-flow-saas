@@ -2,16 +2,19 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ВАЖНО: без этого Dockerfile не сработает
   output: 'standalone',
-
-  // Пропускаем ошибки типизации и линтинга при билде
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: { unoptimized: true },
+  experimental: {
+    // В некоторых версиях помогает пропустить затык на рендеринге
+    missingSuspenseWithCSRBailout: false,
+  },
+  staticPageGenerationTimeout: 1,
 
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
