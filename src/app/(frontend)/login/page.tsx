@@ -3,7 +3,7 @@
 import { loginAction } from '@/features/auth'
 import Link from 'next/link'
 import { useActionState } from 'react'
-
+export const dynamic = 'force-dynamic'
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(loginAction, null)
 
